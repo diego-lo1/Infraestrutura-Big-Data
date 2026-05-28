@@ -200,7 +200,7 @@ python3 loganalyzer.py app.log 2>/dev/null
 
 #### 📸 Print de Tela:
 
-*[Print da execução do loganalyzer.py — adicionar após executar a missão]*
+![Executar o loganalyzer.py](https://github.com/diego-lo1/Infraestrutura-Big-Data/blob/main/semanas%203/prints3/Executar-o-LogAnalyzer.png)
 
 #### 🧠 Questão Respondida:
 
