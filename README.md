@@ -97,7 +97,7 @@ git pull origin main
 - Processamento Distribuído
 ## 👤 Professor
 
-Isac
+Isaque
 
 ## 👤 Aluno
 
