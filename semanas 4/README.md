@@ -38,13 +38,13 @@ Abaixo estão os principais componentes que permitem que um servidor funcione em
 
 A comunicação entre nós de um cluster Big Data acontece através de cabos de rede. Entender a estrutura do cabo RJ45 é essencial para montar e diagnosticar problemas de conectividade.
 
-![cabo de rede](./imagens/cabo%20de%20rede.jpeg)
+![cabo de rede](https://github.com/diego-lo1/Infraestrutura-Big-Data/blob/main/semanas%204/prints/cabo.jpg)
 
 ### Estrutura do Cabo RJ45
 
 O cabo de rede possui **8 fios** internos com cores específicas, seguindo um padrão internacional:
 
-![Ordem dos fios](./imagens/Ordem%20dos%20fios.png)
+![Ordem dos fios](https://github.com/diego-lo1/Infraestrutura-Big-Data/blob/main/semanas%204/prints/estrutura.webp)
 
 ### Sequência Padrão (EIA/TIA-568A):
 
