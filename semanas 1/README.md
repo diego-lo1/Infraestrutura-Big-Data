@@ -4,8 +4,6 @@
 
 Missão prática no Google Cloud Shell para aprender comandos Linux essenciais aplicados ao contexto de Big Data. Esta semana simula ambientes reais de clusters Hadoop, explorando conceitos de HDFS, MapReduce, Docker e monitoramento de recursos.
 
----
-
 ## 🎯 Objetivos
 
 - Configurar e acessar ambiente Linux (Google Cloud Shell)
@@ -18,173 +16,174 @@ Missão prática no Google Cloud Shell para aprender comandos Linux essenciais a
 
 ---
 
-# 📋 Entregas dos Exercícios
+## 📋 Entregas dos Exercícios
 
----
+### Exercício 1: ⚡ Acessando o Ambiente (Nível Zero)
 
-# Exercício 1: ⚡ Acessando o Ambiente (Nível Zero)
+**Objetivo:** Configurar e verificar o ambiente Linux no Google Cloud Shell.
 
-## Objetivo
-
-Configurar e verificar o ambiente Linux no Google Cloud Shell.
-
-## Comandos Executados
-
+#### Comandos Executados:
 ```bash
+# Verificar sistema operacional e arquitetura
 uname -a
 
+# Mostrar diretório atual
 pwd
 ```
 
-## 📸 Print de Tela
+#### 📸 Print de Tela:
+![Verificar o ambiente](https://raw.githubusercontent.com/diego-lo1/Infraestrutura-Big-Data/main/semanas%201/prints1/Verificar-o-ambiente.png)
 
-### Verificar o ambiente
-![Verificar o ambiente](Verificar-o-ambiente.png)
+#### 🧠 Questão Respondida:
+**Q: O que o comando `uname -a` retorna em um sistema Linux?**  
+**R:** B) Exibe informações sobre o kernel e o sistema operacional. O comando mostra detalhes completos incluindo nome do kernel, hostname, versão do kernel, data de compilação e arquitetura do sistema.
 
 ---
 
-# Exercício 2: 🗄️ Organização do Data Lake
+### Exercício 2: 🗄️ Organização do Data Lake
 
-## Objetivo
+**Objetivo:** Simular a estrutura de diretórios de um Data Lake com zonas de dados (arquitetura Medallion).
 
-Simular a estrutura de diretórios de um Data Lake com zonas de dados.
-
-## Comandos Executados
-
+#### Comandos Executados:
 ```bash
+# Criar estrutura de diretórios
 mkdir -p bigdata/raw
 mkdir -p bigdata/processed
 mkdir -p bigdata/logs
 
+# Verificar estrutura criada
 ls -R bigdata
+
+# Criar dataset fictício na zona raw
+echo "id,nome,valor" > bigdata/raw/dados.csv
+echo "1,produtoA,100" >> bigdata/raw/dados.csv
+echo "2,produtoB,200" >> bigdata/raw/dados.csv
+
+# Visualizar conteúdo gerado
+cat bigdata/raw/dados.csv
 ```
 
-## 📸 Prints de Tela
+#### 📸 Print de Tela:
+![Crie a estrutura de diretórios](https://raw.githubusercontent.com/diego-lo1/Infraestrutura-Big-Data/main/semanas%201/prints1/Crie-a-estrutura-de-diret%C3%B3rios.png)
 
-### Estrutura de diretórios
-![Estrutura](Crie%20a%20estrutura%20de%20diretórios.png)
+![Crie um dataset fictício](https://raw.githubusercontent.com/diego-lo1/Infraestrutura-Big-Data/main/semanas%201/prints1/Crie-um-dataset-fict%C3%ADcio.png)
 
-### Dataset fictício
-![Dataset](Crie%20um%20dataset%20fictício.png)
+#### 🧠 Questão Respondida:
+**Q: Em um Data Lake real com Hadoop HDFS, qual é a função da zona "raw" (bruta)?**  
+**R:** C) Receber dados originais sem nenhum tratamento ou transformação. A zona raw (Bronze) é onde os dados são armazenados exatamente como chegam das fontes, sem qualquer processamento, permitindo reprocessamento futuro se necessário.
 
 ---
 
-# Exercício 3: 🔁 Pipeline de Processamento
+### Exercício 3: 🔁 Pipeline de Processamento
 
-## Objetivo
+**Objetivo:** Simular processamento distribuído usando pipes do Linux (análogo ao MapReduce).
 
-Simular processamento distribuído utilizando pipes do Linux.
-
-## Comandos Executados
-
+#### Comandos Executados:
 ```bash
+# Pipeline de transformação: filtrar dados
 cat bigdata/raw/dados.csv | grep produtoA > bigdata/processed/dados_filtrados.csv
+cat bigdata/processed/dados_filtrados.csv
 
+# Contar linhas (análogo ao COUNT no MapReduce)
 cat bigdata/raw/dados.csv | wc -l
 
+# Ordenar e remover duplicatas (análogo ao Reduce)
 cat bigdata/raw/dados.csv | sort | uniq
 ```
 
-## 📸 Prints de Tela
+#### 📸 Print de Tela:
+![Simule uma transformação de dados via pipeline](https://raw.githubusercontent.com/diego-lo1/Infraestrutura-Big-Data/main/semanas%201/prints1/Simule-uma-transforma%C3%A7%C3%A3o-de-dados-via-pipeline.png)
 
-### Pipeline
-![Pipeline](Simule%20uma%20transformação%20de%20dados%20via%20pipeline.png)
+![Simulação de MapReduce](https://raw.githubusercontent.com/diego-lo1/Infraestrutura-Big-Data/main/semanas%201/prints1/Simula%C3%A7%C3%A3o-de-MapReduce.png)
 
-### MapReduce
-![MapReduce](Simulação%20de%20MapReduce.png)
+#### 🧠 Questão Respondida:
+**Q: Qual das opções melhor descreve a analogia entre o operador pipe `|` do Linux e o modelo MapReduce?**  
+**R:** C) Ambos passam dados de uma etapa para outra em cadeia, transformando progressivamente. O pipe encadeia comandos Unix assim como o MapReduce encadeia fases (Map → Shuffle → Reduce), onde cada etapa processa e passa dados para a próxima.
 
 ---
 
-# Exercício 4: 📊 Monitoramento de Recursos
+### Exercício 4: 📊 Monitoramento de Recursos
 
-## Objetivo
+**Objetivo:** Monitorar CPU, memória e processos do sistema, simulando o papel de um SRE (Site Reliability Engineer).
 
-Monitorar CPU, memória e processos do sistema.
-
-## Comandos Executados
-
+#### Comandos Executados:
 ```bash
+# Monitorar recursos do sistema
 top
+# (Pressionar Q para sair)
 
+# Simular carga de CPU
 yes > /dev/null &
 
+# Verificar novamente com top e anotar o PID
 top
 
+# Finalizar o processo de carga
 kill <PID>
 ```
 
-## 📸 Prints de Tela
+#### 📸 Print de Tela:
+![Verificar uso do sistema](https://raw.githubusercontent.com/diego-lo1/Infraestrutura-Big-Data/main/semanas%201/prints1/Verificar-uso-do-sistema.png)
 
-### Simulação de carga de CPU
-![CPU](Simule%20carga%20de%20CPU.png)
+![Simule carga de CPU](https://raw.githubusercontent.com/diego-lo1/Infraestrutura-Big-Data/main/semanas%201/prints1/Simule-carga-de-CPU.png)
 
-### Uso do sistema
-![Sistema](Verificar%20uso%20do%20sistema.png)
+#### 📝 Registro de Campo - Respostas:
+
+**Q1: O que aconteceu com a CPU ao executar `yes > /dev/null`?**  
+**R:** A CPU de um núcleo foi para próximo de 100% de utilização, pois o comando `yes` gera uma saída infinita que é descartada em /dev/null, criando um loop que consome recursos continuamente.
+
+**Q2: Como isso afetaria um cluster Spark em produção com múltiplos jobs?**  
+**R:** Um processo consumindo 100% de CPU em um nó do cluster poderia degradar a performance de outros jobs, causar timeouts, aumentar latência e potencialmente fazer o ResourceManager marcar aquele nó como problemático ou indisponível.
+
+**Q3: Que estratégias podem ser usadas para evitar saturação de recursos?**  
+**R:** Configurar limites de recursos (CPU/memória) por job no YARN/Spark, implementar filas de prioridade, usar auto-scaling de nós, monitoramento proativo com alertas, e configurar fair scheduler para distribuir recursos equitativamente.
 
 ---
 
-# Exercício 5: 🐳 Containers — Simulando Nós de Cluster
+### Exercício 5: 🐳 Containers — Simulando Nós de Cluster
 
-## Objetivo
+**Objetivo:** Criar containers Docker simulando nós master e worker de um cluster Hadoop.
 
-Criar containers Docker simulando nós master e worker.
-
-## Comandos Executados
-
+#### Comandos Executados:
 ```bash
+# Verificar Docker instalado
 docker --version
 
+# Criar rede para o cluster
 docker network create cluster-net
 
+# Criar containers master e worker
 docker run -dit --name master --network cluster-net ubuntu
-
 docker run -dit --name worker --network cluster-net ubuntu
 
+# Listar containers em execução
 docker ps
 ```
 
-## 📸 Prints de Tela
+#### 📸 Print de Tela:
+![Verifique o Docker e crie a rede do cluster](https://raw.githubusercontent.com/diego-lo1/Infraestrutura-Big-Data/main/semanas%201/prints1/Verifique-o-Docker-e-crie-a-rede-do-cluster.png)
 
-### Docker e rede
-![Docker](Verifique%20o%20Docker%20e%20crie%20a%20rede%20do%20cluster.png)
+![Crie os containers master e worker](https://raw.githubusercontent.com/diego-lo1/Infraestrutura-Big-Data/main/semanas%201/prints1/Crie-os-containers-master-e-worker.png)
 
-### Containers
-![Containers](Crie%20os%20containers%20master%20e%20worker.png)
-
-### Master e ping
-![Master](Entre%20no%20master%20e%20instale%20o%20ping.png)
+#### 🧠 Questão Respondida:
+**Q: Em um cluster Hadoop real, qual é a função do NameNode (representado pelo container "master")?**  
+**R:** Gerenciar os metadados do HDFS, controlando onde os blocos de dados estão armazenados nos DataNodes, sem armazenar os dados propriamente ditos.
 
 ---
 
-# Exercício 6: 🔐 Scripts e Permissões
+## 📊 Resultados Esperados
 
-## 📸 Prints de Tela
+Ao concluir esta semana, você terá:
+- ✅ Familiaridade com ambiente Linux e comandos básicos
+- ✅ Compreensão da estrutura de Data Lakes (arquitetura Medallion)
+- ✅ Experiência prática com pipelines de dados usando Unix pipes
+- ✅ Conhecimento de monitoramento de recursos em sistemas distribuídos
+- ✅ Fundamentos de containerização com Docker para clusters
 
-### Script de inicialização
-![Script](Crie%20o%20script%20de%20inicialização1.png)
+## 📚 Referências
 
-### Permissão de execução
-![Permissão](Permita%20execução%20e%20execute%20o%20script.png)
-
----
-
-# 📊 Resultados Esperados
-
-Ao concluir esta semana, foi possível:
-
-- ✅ Aprender comandos Linux essenciais
-- ✅ Simular um Data Lake
-- ✅ Trabalhar com pipelines de dados
-- ✅ Monitorar recursos do sistema
-- ✅ Utilizar Docker para simulação de clusters
-- ✅ Automatizar tarefas com scripts bash
-
----
-
-# 📚 Referências
-
-- Google Cloud Shell
-- Hadoop HDFS
-- Docker
-- Linux Commands
-- Conceitos de Big Data e Data Lake
+- Google Cloud Shell: https://shell.cloud.google.com/
+- Arquitetura Medallion (Bronze/Silver/Gold)
+- Hadoop HDFS e MapReduce
+- Docker para clusters distribuídos
+- Comandos Linux para SRE e DevOps
