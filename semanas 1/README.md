@@ -39,7 +39,7 @@ pwd
 ## 📸 Print de Tela
 
 ### Verificar o ambiente
-![Verificar o ambiente](Verificar%20o%20ambiente.png)
+![Verificar o ambiente](Verificar o ambiente.png)
 
 ---
 
