@@ -1,117 +1,114 @@
-# Semana 4 - Entregas da Disciplina
+# 🖥️ Semana 6: Hardware e Infraestrutura Física para Big Data
 
-## 📝 Descrição
+## 📌 Objetivo da Aula
 
-Registro das entregas práticas da Semana 4 da disciplina de **Infraestrutura de Big Data**.
-
-## 🎯 Objetivos
-
-- Executar os exercícios propostos pelo professor
-- Documentar comandos e evidências de execução
-- Registrar respostas das questões teóricas
+Compreender os componentes físicos de um computador e a importância da infraestrutura de rede para sistemas de Big Data. Esta semana conecta o conhecimento teórico com a prática de montagem e cabeamento de equipamentos.
 
 ---
 
-## 📋 Entregas dos Exercícios
+## 🔗 Por que isso é importante para Big Data?
 
-### Exercício 1: [Título do Exercício]
+A infraestrutura de Big Data não é apenas software (Hadoop, Spark, etc.). É fundamental entender:
 
-**Objetivo:** [Descreva o objetivo do exercício 1]
+- **Hardware**: Processadores, memória e armazenamento definem a capacidade de processamento paralelo
+- **Rede**: A comunicação entre nós é crítica - dados precisam ser transferidos rapidamente em clusters
+- **Escalabilidade**: Ao replicar a arquitetura em múltiplas máquinas, você cria um ambiente distribuído
 
-#### Comandos Executados:
-```bash
-# Inserir comandos utilizados no exercício 1
+---
+
+## 🖲️ Componentes de um Computador
+
+Abaixo estão os principais componentes que permitem que um servidor funcione em um ambiente de Big Data:
+
+![Peças de um computador](./imagens/Peças%20de%20um%20computador.jpg)
+
+### Componentes-chave:
+
+| Componente | Função | Relevância para Big Data |
+|-----------|--------|------------------------|
+| **Placa Mãe** | Conecta todos os componentes | Determina compatibilidade e velocidade |
+| **Processador (CPU)** | Executa operações | Processamento paralelo de dados |
+| **Memória RAM** | Armazenamento temporário | Velocidade de acesso aos dados em processamento |
+| **HD (Disco Rígido)** | Armazenamento permanente | Armazenamento de dados no HDFS |
+| **Fonte de Alimentação** | Fornece energia | Estabilidade do sistema |
+
+---
+
+## 🌐 Cabeamento de Rede (Cabo RJ45)
+
+A comunicação entre nós de um cluster Big Data acontece através de cabos de rede. Entender a estrutura do cabo RJ45 é essencial para montar e diagnosticar problemas de conectividade.
+
+![cabo de rede](./imagens/cabo%20de%20rede.jpeg)
+
+### Estrutura do Cabo RJ45
+
+O cabo de rede possui **8 fios** internos com cores específicas, seguindo um padrão internacional:
+
+![Ordem dos fios](./imagens/Ordem%20dos%20fios.png)
+
+### Sequência Padrão (EIA/TIA-568A):
+
+1. **Branco-Verde** 🟢
+2. **Verde** 🟢
+3. **Branco-Laranja** 🟠
+4. **Azul** 🔵
+5. **Branco-Azul** 🔵
+6. **Laranja** 🟠
+7. **Branco-Marrom** 🟤
+8. **Marrom** 🟤
+
+> **Dica**: A sequência é importante porque determina quais fios transmitem e recebem dados. Dessa forma, o sinal viaja corretamente entre os computadores.
+
+> **Padrão utilizado**: A sequência acima segue o padrão **EIA/TIA-568A**, uma das duas normas internacionais para crimpagem de cabos RJ45. Ela difere do padrão 568B apenas na posição dos pares laranja e verde (pinos 1, 2, 3 e 6). Ambos os padrões funcionam corretamente, desde que as duas pontas do cabo usem a **mesma norma** (cabo direto) — ou normas opostas intencionalmente (cabo crossover).
+
+---
+
+## 🏗️ Aplicação em Clusters de Big Data
+
+### Por que precisamos disso?
+
+```
+Máquina 1 (Node Master)     ← Cabo de Rede →     Máquina 2 (DataNode)
+        ↓                                                  ↓
+   Processador                                      Processador
+   CPU Cores: 8                                     CPU Cores: 8
+   RAM: 32GB                                        RAM: 32GB
+        ↓                                                  ↓
+   HDFS (Armazenamento)    ← Comunicação rápida →  HDFS (Dados)
+   MapReduce (Proc.)                                 Dados replicados
 ```
 
-#### 📸 Print de Tela:
-*[Inserir print da execução do exercício 1]*
-
-#### 🧠 Questão Respondida:
-**Q:** [Inserir pergunta do exercício 1]  
-**R:** [Inserir sua resposta]
+- **Múltiplas máquinas** conectadas com cabos de rede adequados
+- **Processadores rápidos** para executar Map e Reduce em paralelo
+- **Memória suficiente** para carregar dados em processamento
+- **Cabos bem montados** garantem latência baixa e bandwidth alto
 
 ---
 
-### Exercício 2: [Título do Exercício]
+## 📊 Impacto na Performance
 
-**Objetivo:** [Descreva o objetivo do exercício 2]
+| Aspecto | Impacto |
+|--------|--------|
+| CPU fraca | Processamento lento, gargalo no cálculo |
+| Pouca RAM | Spill to disk, reduz velocidade drasticamente |
+| Rede lenta | Comunicação entre nós é mais lenta que processamento |
+| Cabeamento mal feito | Perda de pacotes, timeouts, instabilidade |
 
-#### Comandos Executados:
-```bash
-# Inserir comandos utilizados no exercício 2
-```
-
-#### 📸 Print de Tela:
-*[Inserir print da execução do exercício 2]*
-
-#### 🧠 Questão Respondida:
-**Q:** [Inserir pergunta do exercício 2]  
-**R:** [Inserir sua resposta]
+> **Importante**: A rede é frequentemente o **gargalo** em clusters de Big Data. Um cabo mal montado pode corromper pacotes.
 
 ---
 
-### Exercício 3: [Título do Exercício]
+## ✅ Resumo
 
-**Objetivo:** [Descreva o objetivo do exercício 3]
+Esta semana você aprendeu:
+- ✅ Componentes de um servidor e sua função
+- ✅ Como montar uma CPU em uma placa mãe
+- ✅ Estrutura e montagem de cabos RJ45
+- ✅ A importância da infraestrutura física para Big Data
 
-#### Comandos Executados:
-```bash
-# Inserir comandos utilizados no exercício 3
-```
-
-#### 📸 Print de Tela:
-*[Inserir print da execução do exercício 3]*
-
-#### 🧠 Questão Respondida:
-**Q:** [Inserir pergunta do exercício 3]  
-**R:** [Inserir sua resposta]
+**Próximo passo**: Usar esse conhecimento para diagnosticar problemas de rede e otimizar a comunicação em clusters!
 
 ---
 
-### Exercício 4: [Título do Exercício]
-
-**Objetivo:** [Descreva o objetivo do exercício 4]
-
-#### Comandos Executados:
-```bash
-# Inserir comandos utilizados no exercício 4
-```
-
-#### 📸 Print de Tela:
-*[Inserir print da execução do exercício 4]*
-
-#### 🧠 Questão Respondida:
-**Q:** [Inserir pergunta do exercício 4]  
-**R:** [Inserir sua resposta]
-
----
-
-### Exercício 5: [Título do Exercício]
-
-**Objetivo:** [Descreva o objetivo do exercício 5]
-
-#### Comandos Executados:
-```bash
-# Inserir comandos utilizados no exercício 5
-```
-
-#### 📸 Print de Tela:
-*[Inserir print da execução do exercício 5]*
-
-#### 🧠 Questão Respondida:
-**Q:** [Inserir pergunta do exercício 5]  
-**R:** [Inserir sua resposta]
-
----
-
-## 📊 Resultados Esperados
-
-Ao concluir esta semana, você terá:
-- ✅ Exercícios executados e documentados
-- ✅ Evidências visuais (prints) de cada entrega
-- ✅ Respostas registradas para todas as questões
-
-## 📚 Referências
-
-- Material da aula da Semana 4
-- Documentação oficial das tecnologias utilizadas
+**Data da aula**: 28/04/2026  
+**Documentado por**: Thais 👩‍💻
