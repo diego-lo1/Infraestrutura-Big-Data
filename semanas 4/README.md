@@ -20,7 +20,7 @@ A infraestrutura de Big Data não é apenas software (Hadoop, Spark, etc.). É f
 
 Abaixo estão os principais componentes que permitem que um servidor funcione em um ambiente de Big Data:
 
-![Peças de um computador](./imagens/Peças%20de%20um%20computador.jpg)
+![Peças de um computador]([./imagens/Peças%20de%20um%20computador.jpg](https://github.com/diego-lo1/Infraestrutura-Big-Data/blob/main/semanas%204/prints/cpu.png))
 
 ### Componentes-chave:
 
