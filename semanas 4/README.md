@@ -111,4 +111,4 @@ Esta semana você aprendeu:
 ---
 
 **Data da aula**: 28/04/2026  
-**Documentado por**: Diego 👩‍💻
+**Documentado por**: Diego
